@@ -38,9 +38,13 @@ const Board = () => {
   }
   const handleClick = (i) => {
     const newSquares = squares.slice();
-    newSquares[i] = xIsNext ? "O" : "X";
     setSquares(newSquares);
     setXIsNext(!xIsNext);
+    if (calculateWinner(newSquares) || newSquares[i]) {
+      return;
+    }
+    newSquares[i] = xIsNext ? "O" : "X";
+    setSquares(newSquares);
   };
 
   const renderSquare = (i) => {
