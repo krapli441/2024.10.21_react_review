@@ -1,7 +1,9 @@
-import React from "react";
+import React, { Component } from "react";
 
-export class Square extends React.Component {
+class Square extends Component {
   render() {
-    return <div>Square Components</div>;
+    return <div className="sqaure"></div>;
   }
 }
+
+export default Square;
