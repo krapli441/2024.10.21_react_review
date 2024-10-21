@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import "./square.css";
 
 class Square extends Component {
   render() {
-    return <div className="sqaure"></div>;
+    return <button className="sqaure">Square</button>;
   }
 }
 
