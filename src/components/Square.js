@@ -3,7 +3,11 @@ import "./square.css";
 
 class Square extends Component {
   render() {
-    return <button className="sqaure">{this.props.value}</button>;
+    return (
+      <button className="sqaure" onClick={() => console.log("clicked")}>
+        {this.props.value}
+      </button>
+    );
   }
 }
 
