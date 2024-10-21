@@ -3,28 +3,35 @@ import Square from "./square";
 import "./board.css";
 
 class Board extends Component {
-  renderSqaure(i) {
+  constructor(props) {
+    super(props);
+    this.state = {
+      squares: Array(9).fill(null),
+    };
+  }
+  renderSquare(i) {
     return <Square value={i} />;
   }
+
   render() {
-    const status = "Next player: X";
+    const status = "Next player: " + (this.state.xIsNext ? "X" : "O");
     return (
       <div>
         <div className="status">{status}</div>
         <div className="board-row">
-          {this.renderSqaure(0)}
-          {this.renderSqaure(1)}
-          {this.renderSqaure(2)}
+          {this.renderSquare(0)}
+          {this.renderSquare(1)}
+          {this.renderSquare(2)}
         </div>
         <div className="board-row">
-          {this.renderSqaure(3)}
-          {this.renderSqaure(4)}
-          {this.renderSqaure(5)}
+          {this.renderSquare(3)}
+          {this.renderSquare(4)}
+          {this.renderSquare(5)}
         </div>
         <div className="board-row">
-          {this.renderSqaure(6)}
-          {this.renderSqaure(7)}
-          {this.renderSqaure(8)}
+          {this.renderSquare(6)}
+          {this.renderSquare(7)}
+          {this.renderSquare(8)}
         </div>
       </div>
     );
