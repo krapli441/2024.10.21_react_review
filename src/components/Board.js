@@ -4,7 +4,7 @@ import "./board.css";
 
 class Board extends Component {
   renderSqaure(i) {
-    return <Square />;
+    return <Square value={i} />;
   }
   render() {
     const status = "Next player: X";

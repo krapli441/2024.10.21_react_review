@@ -3,7 +3,7 @@ import "./square.css";
 
 class Square extends Component {
   render() {
-    return <button className="sqaure">Square</button>;
+    return <button className="sqaure">{this.props.value}</button>;
   }
 }
 
