@@ -6,7 +6,7 @@ const Board = () => {
   const [squares, setSquares] = useState(Array(9).fill(null));
 
   const handleClick = (i) => {
-    const newSquares = this.state.squares.slice();
+    const newSquares = squares.slice();
     newSquares[i] = "X";
     setSquares(newSquares);
   };
@@ -22,10 +22,9 @@ const Board = () => {
     );
   };
 
-  const status = "Next player: " + (this.state.xIsNext ? "X" : "O");
   return (
     <div>
-      <div className="status">{status}</div>
+      <div className="status">Next Player: X, O</div>
       <div className="board-row">
         {renderSquare(0)}
         {renderSquare(1)}
