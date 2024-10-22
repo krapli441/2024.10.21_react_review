@@ -1,25 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import Square from "./square";
 import "./board.css";
 
-const Board = () => {
-  // const handleClick = (i) => {
-  //   const newSquares = squares.slice();
-  //   setSquares(newSquares);
-  //   setXIsNext(!xIsNext);
-  //   if (calculateWinner(newSquares) || newSquares[i]) {
-  //     return;
-  //   }
-  //   newSquares[i] = xIsNext ? "O" : "X";
-  //   setSquares(newSquares);
-  // };
-
+const Board = ({ squares, onClick }) => {
   const renderSquare = (i) => {
     return (
       <Square
         value={squares[i]}
         onClick={() => {
-          handleClick(i);
+          onClick(i);
         }}
       />
     );
@@ -27,7 +16,6 @@ const Board = () => {
 
   return (
     <div>
-      <div className="status">{status}</div>
       <div className="board-row">
         {renderSquare(0)}
         {renderSquare(1)}

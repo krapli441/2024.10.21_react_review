@@ -41,25 +41,24 @@ const App = () => {
 
   const handleClick = (i) => {
     const newSquares = current.squares.slice();
-    if(calculateWinner(newSquares) || newSquares[i]) {
+    if (calculateWinner(newSquares) || newSquares[i]) {
       return;
-  } else {
-    newSquares[i] = xIsNext? "X" : "O";
-    setHistory([...history, {squares: newSquares}]);
-    setXIsNext(prev => !prev);
-  }
+    } else {
+      newSquares[i] = xIsNext ? "X" : "O";
+      setHistory([...history, { squares: newSquares }]);
+      setXIsNext((prev) => !prev);
+    }
+  };
 
   return (
     <div className="game">
       <div className="game-board">
-        <Board />
+        <Board squares={current.squares} onClick={(i) => handleClick(i)} />
       </div>
       <div className="game-info">
-        <div> status </div>
-        <div> TODO </div>
+        <div className="status">{status}</div>
       </div>
     </div>
   );
 };
-
 export default App;
