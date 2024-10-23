@@ -53,7 +53,7 @@ const App = () => {
   const moves = history.map((step, move) => {
     const desc = move ? "go to move #" + move : "go to game start";
     return (
-      <li>
+      <li key={move}>
         <button>{desc}</button>
       </li>
     );
