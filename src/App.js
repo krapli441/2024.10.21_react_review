@@ -50,6 +50,15 @@ const App = () => {
     }
   };
 
+  const moves = history.map((step, move) => {
+    const desc = move ? "go to move #" + move : "go to game start";
+    return (
+      <li>
+        <button>{desc}</button>
+      </li>
+    );
+  });
+
   return (
     <div className="game">
       <div className="game-board">
@@ -57,6 +66,7 @@ const App = () => {
       </div>
       <div className="game-info">
         <div className="status">{status}</div>
+        <ol>{moves}</ol>
       </div>
     </div>
   );
