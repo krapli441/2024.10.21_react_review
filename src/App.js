@@ -5,6 +5,7 @@ import { useState } from "react";
 const App = () => {
   const [history, setHistory] = useState([{ squares: Array(9).fill(null) }]);
   const [xIsNext, setXIsNext] = useState(true);
+  const [stepNumber, setStepNumber] = useState(0);
 
   const calculateWinner = (squares) => {
     const lines = [
@@ -29,7 +30,7 @@ const App = () => {
     }
   };
 
-  const current = history[history.length - 1];
+  const current = history[stepNumber];
   const winner = calculateWinner(current.squares);
 
   let status;
@@ -40,13 +41,17 @@ const App = () => {
   }
 
   const handleClick = (i) => {
-    const newSquares = current.squares.slice();
+    const newHistory = history.slice(0, stepNumber + 1);
+    const newCurrent = newHistory[newHistory.length - 1];
+    const newSquares = newCurrent.squares.slice();
     if (calculateWinner(newSquares) || newSquares[i]) {
       return;
     } else {
       newSquares[i] = xIsNext ? "X" : "O";
-      setHistory([...history, { squares: newSquares }]);
+      setHistory([...newHistory, { squares: newSquares }]);
       setXIsNext((prev) => !prev);
+
+      setStepNumber(newHistory.length);
     }
   };
 
@@ -54,10 +59,15 @@ const App = () => {
     const desc = move ? "go to move #" + move : "go to game start";
     return (
       <li key={move}>
-        <button>{desc}</button>
+        <button onClick={() => jumpTo(move)}>{desc}</button>
       </li>
     );
   });
+
+  const jumpTo = (step) => {
+    setStepNumber(step);
+    setXIsNext(step % 2 === 0); // stepNumber가 짝수일 때마다 xIsNext 값을 true로 설정
+  };
 
   return (
     <div className="game">
