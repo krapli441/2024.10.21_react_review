@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import A from "./A";
+import B from "./B";
 
 function App() {
   const [value, setValue] = useState("");
@@ -20,8 +21,8 @@ function App() {
     >
       <input value={value} onChange={(e) => setValue(e.target.value)}></input>
       <div style={{ display: "flex" }}>
-        <A message={value} />
-        <B />
+        <A message={value} posts={posts} />
+        <B message={value} posts={posts} />
       </div>
     </div>
   );
