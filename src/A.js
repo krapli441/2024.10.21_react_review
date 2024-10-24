@@ -5,7 +5,11 @@ const A = ({ message, post }) => {
     <div>
       <h1>Component A</h1>
       <p>{message}</p>
-      <ul>{post}</ul>
+      <ul>
+        {post.map((post) => {
+          return <li key={post.id}>{post.title}</li>;
+        })}
+      </ul>
     </div>
   );
 };
