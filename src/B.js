@@ -12,7 +12,8 @@ const ListItem = React.memo(({ post }) => {
   );
 });
 
-const List = React.memo(({ posts }) => {
+const List = React.memo(({ posts, testFunction }) => {
+  console.log("List Component is rendering");
   return (
     <ul>
       {posts.map((post) => (
@@ -30,7 +31,7 @@ const B = ({ message, posts }) => {
     <div>
       <h1>Component B</h1>
       <Message message={message} />
-      <List posts={posts} />
+      <List posts={posts} testFunction={testFunction} />
     </div>
   );
 };
